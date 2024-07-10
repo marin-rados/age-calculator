@@ -1,0 +1,108 @@
+.calculate {
+  display: flex;
+  align-items: flex-start; /* Align items to the start horizontally */
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: var(--color-white);
+  width: 50rem;
+  padding: 4rem;
+  border-radius: var(--border-rounded);
+  border-bottom-right-radius: var(--border-rounded-xl);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.inputs {
+  display: flex;
+  width: 90%;
+  &__input {
+    &__label {
+      font-weight: bold;
+      color: var(--color-smokey-grey);
+    }
+    &__field {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      height: 4rem;
+      padding: 1rem;
+      border-radius: var(--border-round);
+      border: 1px solid var(--color-light-grey);
+      font-size: 2rem;
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &::placeholder {
+        color: var(--color-smokey-grey);
+        font-weight: bold;
+      }
+    }
+    &__error {
+      margin-top: 0.5rem;
+      font-weight: 500;
+      color: var(--color-light-red);
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  &__hr {
+    width: 90%;
+    border: 1px solid var(--color-light-grey);
+    opacity: 0.75;
+  }
+  &__circle {
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-circle);
+    background-color: var(--color-purple);
+    cursor: pointer;
+    transition: 100ms ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  font-weight: bolder;
+  &__result {
+    display: flex;
+    align-items: center;
+    margin-bottom: -2rem;
+    &:last-child {
+      margin-bottom: 0rem;
+    }
+    &__value {
+      font-size: 6rem;
+      color: var(--color-purple);
+    }
+    &__title {
+      font-size: 6rem;
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.error {
+  border: 1px solid var(--color-light-red);
+}
+
+.error-text {
+  color: var(--color-light-red);
+}
