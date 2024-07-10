@@ -17,6 +17,12 @@ const Calculate = () => {
     const dayError = document.getElementById("day");
     const monthError = document.getElementById("month");
     const yearError = document.getElementById("year");
+    const dayInputError = document.getElementById("dayInput");
+    const monthInputError = document.getElementById("monthInput");
+    const yearInputError = document.getElementById("yearInput");
+    const dayTitleError = document.getElementById("dayTitle");
+    const monthTitleError = document.getElementById("monthTitle");
+    const yearTitleError = document.getElementById("yearTitle");
 
     const currentYear = new Date().getFullYear();
     const birthDate = new Date(year, month - 1, day);
@@ -30,6 +36,14 @@ const Calculate = () => {
     monthError?.classList.add("hide");
     yearError?.classList.add("hide");
 
+    dayInputError?.classList.remove("error");
+    monthInputError?.classList.remove("error");
+    yearInputError?.classList.remove("error");
+
+    dayTitleError?.classList.remove("error-text");
+    monthTitleError?.classList.remove("error-text");
+    yearTitleError?.classList.remove("error-text");
+
     if (
       (day > 31 && month > 12 && year > currentYear) ||
       (day < 0 && month < 0 && year > currentYear)
@@ -37,21 +51,33 @@ const Calculate = () => {
       dayError?.classList.remove("hide");
       monthError?.classList.remove("hide");
       yearError?.classList.remove("hide");
+      dayInputError?.classList.add("error");
+      monthInputError?.classList.add("error");
+      yearInputError?.classList.add("error");
+      dayTitleError?.classList.add("error-text");
+      monthTitleError?.classList.add("error-text");
+      yearTitleError?.classList.add("error-text");
       console.log("error");
       return;
     }
     if (day > 31 || day < 1) {
       dayError?.classList.remove("hide");
+      dayInputError?.classList.add("error");
+      dayTitleError?.classList.add("error-text");
       console.log("Invalid day");
       return;
     }
     if (month > 12 || month < 1) {
       monthError?.classList.remove("hide");
+      monthInputError?.classList.add("error");
+      monthTitleError?.classList.add("error-text");
       console.log("Invalid month");
       return;
     }
-    if (year > currentYear || year < 1900) {
+    if (year > currentYear) {
       yearError?.classList.remove("hide");
+      yearInputError?.classList.add("error");
+      yearTitleError?.classList.add("error-text");
       console.log("Invalid year");
       return;
     }
@@ -74,11 +100,14 @@ const Calculate = () => {
     <div className="calculate">
       <div className="inputs">
         <div className="inputs__input">
-          <p className="inputs__input__label">DAY</p>
+          <p id="dayTitle" className="inputs__input__label">
+            DAY
+          </p>
           <input
             className="inputs__input__field"
             type="number"
             placeholder="DD"
+            id="dayInput"
             onChange={(e) => {
               const value = parseInt(e.target.value);
               setDay(value ? value : null);
@@ -90,11 +119,14 @@ const Calculate = () => {
           </p>
         </div>
         <div className="inputs__input">
-          <p className="inputs__input__label">MONTH</p>
+          <p id="monthTitle" className="inputs__input__label">
+            MONTH
+          </p>
           <input
             className="inputs__input__field"
             type="number"
             placeholder="MM"
+            id="monthInput"
             onChange={(e) => {
               const value = parseInt(e.target.value);
               setMonth(value ? value : null);
@@ -106,11 +138,14 @@ const Calculate = () => {
           </p>
         </div>
         <div className="inputs__input">
-          <p className="inputs__input__label">YEAR</p>
+          <p id="yearTitle" className="inputs__input__label">
+            YEAR
+          </p>
           <input
             className="inputs__input__field"
             type="number"
             placeholder="YYYY"
+            id="yearInput"
             onChange={(e) => {
               const value = parseInt(e.target.value);
               setYear(value ? value : null);
